@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube VI Subtitles</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="header"><span class="logo">VI</span><div><h1>YouTube VI Subtitles</h1><small>Local VinAI</small></div></header>
+
+  <div class="toggle-row">
+    <div><strong id="status-text">Đang tắt</strong><div id="progress-text" class="muted"></div></div>
+    <button id="toggle-btn" class="btn-toggle off">Bật dịch</button>
+  </div>
+
+  <hr>
+  <div class="section-title">Local server</div>
+  <div class="section">
+    <label for="local-url">Địa chỉ server</label>
+    <input type="text" id="local-url" placeholder="http://127.0.0.1:8000">
+    <button id="check-local-btn" class="btn-small local-check">Kiểm tra kết nối</button>
+    <div id="local-status" class="message"></div>
+  </div>
+  <label class="option-row"><input type="checkbox" id="allow-realtime-fallback"> Dùng CC đang hiển thị khi transcript lỗi</label>
+
+  <hr>
+  <div class="section-title">Hiển thị</div>
+  <div class="style-grid">
+    <div class="section"><label for="subtitle-display-mode">Nội dung</label><select id="subtitle-display-mode"><option value="vi">Chỉ tiếng Việt</option><option value="bilingual">Anh + Việt</option></select></div>
+    <div class="section"><label for="subtitle-max-lines">Số dòng tối đa</label><select id="subtitle-max-lines"><option value="1">1 dòng</option><option value="2">2 dòng</option><option value="3">3 dòng</option></select></div>
+  </div>
+  <label class="option-row"><input type="checkbox" id="hide-original-captions"> Ẩn CC YouTube khi bật dịch</label>
+
+  <div class="section"><label for="subtitle-font-family">Font chữ</label><select id="subtitle-font-family"><option>Arial</option><option>Roboto</option><option>Verdana</option><option>Tahoma</option><option>Times New Roman</option></select></div>
+  <div class="section"><label for="subtitle-font-size">Cỡ chữ: <span id="font-size-value">20px</span></label><input type="range" id="subtitle-font-size" min="14" max="48" value="20"></div>
+  <div class="style-grid">
+    <div class="section"><label for="subtitle-text-color">Màu chữ</label><select id="subtitle-text-color"><option value="#ffffff">Trắng</option><option value="#ffeb3b">Vàng</option><option value="#00ffff">Cyan</option><option value="#90ee90">Xanh lá nhạt</option><option value="#ffb6c1">Hồng nhạt</option><option value="#ffb347">Cam nhạt</option></select></div>
+    <div class="section"><label for="subtitle-background-color">Màu nền</label><select id="subtitle-background-color"><option value="#000000">Đen</option><option value="#303030">Xám đậm</option><option value="#0b1f3a">Xanh navy</option><option value="#4a1018">Đỏ rượu</option></select></div>
+  </div>
+  <div class="section"><label for="subtitle-background-opacity">Độ mờ nền: <span id="background-opacity-value">45%</span></label><input type="range" id="subtitle-background-opacity" min="0" max="100" step="5" value="45"></div>
+  <div class="section"><label for="subtitle-bottom-position">Vị trí từ đáy: <span id="bottom-position-value">8%</span></label><input type="range" id="subtitle-bottom-position" min="3" max="45" value="8"><div class="range-hints"><span>Thấp</span><span>Cao</span></div></div>
+  <div id="subtitle-preview" class="subtitle-preview">Bản dịch phụ đề mẫu</div>
+  <div class="hint">Có thể kéo phụ đề trực tiếp trên video. Nhấp đúp để đặt lại vị trí.</div>
+
+  <button id="save-btn" class="btn-save">Lưu cài đặt</button>
+  <div id="save-msg" class="message"></div>
+
+  <hr>
+  <div class="logs-header"><label>Logs</label><div class="logs-actions"><button id="refresh-logs-btn" class="btn-small">Refresh</button><button id="copy-logs-btn" class="btn-small">Copy</button><button id="clear-logs-btn" class="btn-small danger">Clear</button></div></div>
+  <pre id="logs-output" class="logs-output">Chưa có log.</pre>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+# Python and local model data
+**/.venv/
+**/.hf-cache/
+**/__pycache__/
+*.py[cod]
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Logs, databases and temporary files
+*.log
+*.db
+*.sqlite
+*.sqlite3
+*.tmp
+*.swp
+
+# Editor and OS metadata
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local agent metadata
+.agents/
+.codex/

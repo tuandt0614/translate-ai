@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+torch
+transformers>=4.37,<5
+sentencepiece
+accelerate

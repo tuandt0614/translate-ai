@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube VI Subtitles",
+  "version": "1.0.0",
+  "description": "Dịch subtitle YouTube sang tiếng Việt bằng AI",
+  "permissions": ["storage", "activeTab", "webNavigation"],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "http://127.0.0.1:8000/*",
+    "http://localhost:8000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "commands": {
+    "toggle-translation": { "suggested_key": { "default": "Alt+Shift+V" }, "description": "Bật hoặc tắt phụ đề dịch" },
+    "increase-font": { "suggested_key": { "default": "Alt+Shift+Up" }, "description": "Tăng cỡ chữ phụ đề" },
+    "decrease-font": { "suggested_key": { "default": "Alt+Shift+Down" }, "description": "Giảm cỡ chữ phụ đề" },
+    "move-subtitle-up": { "description": "Di chuyển phụ đề lên" },
+    "move-subtitle-down": { "description": "Di chuyển phụ đề xuống" }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/watch*"],
+      "js": ["src/page-bridge.js"],
+      "world": "MAIN",
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.youtube.com/watch*"],
+      "js": ["src/subtitle-core.js", "src/content.js"],
+      "css": ["src/subtitle.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
